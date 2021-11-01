@@ -139,8 +139,7 @@ void multiAssign( int multiplicand[], int multiplier[], int &multiplicandSize, i
     for (int i = 0; i < multiplicandSize; ++i) for (int j = 0; j < multiplierSize; ++j) if ((product[i + j] += multiplicand[i] * multiplier[j]) > 9)product[i + j + 1] += product[i + j] / 10, product[i + j] %= 10;
     while (productSize > 0 && !product[productSize - 1]) --productSize;
 
-    multiplicandSize = productSize;
-    for (int i = 0; i < multiplicandSize; ++i) multiplicand[i] = product[i];
+    for (int i = 0; i < (multiplicandSize = productSize); ++i) multiplicand[i] = product[i];
 }
 
 void division( int dividend[], int divisor[], int quotient[], int remainder[],
@@ -169,23 +168,15 @@ void division( int dividend[], int divisor[], int quotient[], int remainder[],
 
     for (int i = 0; i < quotientSize; ++i) quotient[i] = 0;
 
-    int a = divisor[divisorSize - 1], j = dividendSize - 1;
+    int a = divisor[divisorSize - 1], j = dividendSize - 1, b = 0;
 
     for (int i = dividendSize - divisorSize; i >= 0; i--, j--)
-    {
-        int b = 10 * remainder[j + 1] + remainder[j];
-        if (a <= b)
+        if (a <= (b = 10 * remainder[j + 1] + remainder[j]))
         {
-            quotient[i] = b / a;
-            multiplication(divisor, quotient[i], buffer, divisorSize, i, bufferSize);
-            while (less(remainder, buffer, remainderSize, bufferSize))
-            {
-                quotient[i]--;
-                multiplication(divisor, quotient[i], buffer, divisorSize, i, bufferSize);
-            }
+            multiplication(divisor, (quotient[i] = b / a), buffer, divisorSize, i, bufferSize);
+            while (less(remainder, buffer, remainderSize, bufferSize)) multiplication(divisor, --quotient[i], buffer, divisorSize, i, bufferSize);
             subtraAssign(remainder, buffer, remainderSize, bufferSize);
         }
-    }
 }
 
 void multiplication( int multiplicand[], int multiplier, int product[],
