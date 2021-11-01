@@ -191,8 +191,7 @@ void division( int dividend[], int divisor[], int quotient[], int remainder[],
 void multiplication( int multiplicand[], int multiplier, int product[],
    int multiplicandSize, int multiplierPos, int &productSize )
 {
-    int bufferSize = 0, t = multiplier;
-    int buffer[arraySize] = {};
+    int bufferSize = 0, buffer[arraySize] = {};
     while (multiplier > 0) buffer[bufferSize++] = multiplier % 10, multiplier /= 10;
 
     productSize = bufferSize + multiplierPos;
