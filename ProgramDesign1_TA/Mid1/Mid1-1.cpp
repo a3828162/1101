@@ -10,11 +10,6 @@ int cycleLength( int n ); // returns the cycle-length of n
 
 int main()
 {
-    /*while (1) {
-        int a = 0;
-        cin >> a;
-        cout << cycleLength(a) << endl;
-    }*/
    int i, j;
    while( cin >> i >> j )
    {
