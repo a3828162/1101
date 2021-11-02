@@ -137,7 +137,7 @@ void multiAssign( int multiplicand[], int multiplier[], int &multiplicandSize, i
     int product[arraySize] = {}, productSize = multiplicandSize + multiplierSize;
 
     for (int i = 0; i < multiplicandSize; ++i) for (int j = 0; j < multiplierSize; ++j) if ((product[i + j] += multiplicand[i] * multiplier[j]) > 9)product[i + j + 1] += product[i + j] / 10, product[i + j] %= 10;
-    while (productSize > 0 && !product[productSize - 1]) --productSize;
+    while (productSize > 1 && !product[productSize - 1]) --productSize;
 
     for (int i = 0; i < (multiplicandSize = productSize); ++i) multiplicand[i] = product[i];
 }
@@ -182,13 +182,25 @@ void division( int dividend[], int divisor[], int quotient[], int remainder[],
 void multiplication( int multiplicand[], int multiplier, int product[],
    int multiplicandSize, int multiplierPos, int &productSize )
 {
-    int bufferSize = 0, buffer[arraySize] = {};
+    /*int bufferSize = 0, buffer[arraySize] = {};
     while (multiplier > 0) buffer[bufferSize++] = multiplier % 10, multiplier /= 10;
 
     productSize = bufferSize + multiplierPos;
     for (int i = 0; i < bufferSize; ++i) product[i + multiplierPos] = buffer[i];
 
-    multiAssign(product, multiplicand, productSize, multiplicandSize);
+    multiAssign(product, multiplicand, productSize, multiplicandSize);*/
+    
+    productSize = multiplicandSize + multiplierPos + 1;
+    for (int i = 0; i < productSize; ++i) product[i] = 0;
+    for (int i = 0; i < multiplicandSize; ++i)
+    {
+        product[i + multiplierPos] += multiplicand[i] * multiplier;
+    }
+    for (int i = 0; i < productSize; ++i)
+    {
+        if(product[i]>9) product[i + 1] += product[i] / 10, product[i] %= 10;
+    }
+    while (productSize > 1 && !product[productSize - 1]) --productSize;
 }
 
 void subtraAssign( int minuend[], int subtrahend[], int &minuendSize, int subtrahendSize )
@@ -198,5 +210,5 @@ void subtraAssign( int minuend[], int subtrahend[], int &minuendSize, int subtra
         if (i < subtrahendSize) minuend[i] -= subtrahend[i];
         if (minuend[i] < 0) minuend[i] += 10, minuend[i + 1] -= 1;
     }
-    while (minuendSize > 0 && !minuend[minuendSize - 1]) --minuendSize;
+    while (minuendSize > 1 && !minuend[minuendSize - 1]) --minuendSize;
 }
