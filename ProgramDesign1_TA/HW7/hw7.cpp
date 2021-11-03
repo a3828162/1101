@@ -280,17 +280,74 @@ void minus( int *&coefficient1, int *&exponent1, int &size1,
 }
 
 // addend += adder
-void addition( int *&addendCoef, int *&addendExpon, int &addendSize,
-               int *adderCoef, int *adderExpon, int adderSize )
+void addition(int*& addendCoef, int*& addendExpon, int& addendSize,
+    int* adderCoef, int* adderExpon, int adderSize)
 {
-   int *sumCoef = new int[ arraySize ]();
-   int *sumExpon = new int[ arraySize ]();
-   int i = 0;
-   int j = 0;
-   int k = 0;
+    int* sumCoef = new int[arraySize]();
+    int* sumExpon = new int[arraySize]();
+    int i = 0;
+    int j = 0;
+    int k = 0;
+
+    /*while (i < addendSize && j < adderSize)
+    {
 
 
+        if (addendExpon[i] > adderExpon[j])
+        {
+            sumExpon[k] = addendExpon[i];
+            sumCoef[k++] = addendCoef[i++];
+        }
+        else if (addendExpon[i] < adderExpon[j])
+        {
+            sumExpon[k] = adderExpon[j];
+            sumCoef[k++] = adderCoef[j++];
+        }
+        else
+        {
+            if (addendCoef[i] + adderCoef[j] != 0)
+            {
+                sumExpon[k] = addendExpon[i];
+                sumCoef[k++] = addendCoef[i] + adderCoef[j];
+            }
+            i++;
+            j++;
+        }
+    }
 
+    while (i < addendSize)
+    {
+        sumExpon[k] = addendExpon[i];
+        sumCoef[k++] = addendCoef[i++];
+    }
+
+    while (j < adderSize)
+    {
+        sumExpon[k] = adderExpon[j];
+        sumCoef[k++] = adderCoef[j++];
+    }*/
+
+    while (i < addendSize || j < adderSize)
+    {
+        if (i == addendSize)
+        {
+            while (j < adderSize) sumExpon[k] = adderExpon[j], sumCoef[k++] = adderCoef[j++];
+            break;
+        }
+        else if (j == adderSize)
+        {
+            while (i < addendSize) sumExpon[k] = addendExpon[i], sumCoef[k++] = addendCoef[i++];        
+            break;
+        }
+
+        if (addendExpon[i] > adderExpon[j]) sumExpon[k] = addendExpon[i], sumCoef[k++] = addendCoef[i++];
+        else if (addendExpon[i] < adderExpon[j]) sumExpon[k] = adderExpon[j], sumCoef[k++] = adderCoef[j++];
+        else
+        {
+            if (addendCoef[i] + adderCoef[j] != 0) sumExpon[k] = addendExpon[i], sumCoef[k++] = addendCoef[i] + adderCoef[j];
+            i++, j++;
+        }
+    }
 
    if( addendSize != k )
    {
@@ -299,10 +356,10 @@ void addition( int *&addendCoef, int *&addendExpon, int &addendSize,
    }
 
    addendSize = k;
-   for( int i = 0; i < addendSize; i++ ) // addend = sum
+   for( int t = 0; t < addendSize; t++ ) // addend = sum
    {
-      addendCoef[ i ] = sumCoef[ i ];
-      addendExpon[ i ] = sumExpon[ i ];
+      addendCoef[ t ] = sumCoef[ t ];
+      addendExpon[ t ] = sumExpon[ t ];
    }
 
    delete[] sumCoef;
@@ -343,8 +400,11 @@ void multiplication( int *multiplicandCoef, int *multiplicandExpon, int multipli
    int *bufferCoef = new int[ bufferSize ]();
    int *bufferExpon = new int[ bufferSize ]();
 
-
-
+   for (int i = 0; i < multiplierSize; ++i)
+   {
+       for (int j = 0; j < multiplicandSize; ++j) bufferExpon[j] = multiplicandExpon[j] + multiplierExpon[i], bufferCoef[j] = multiplicandCoef[j] * multiplierCoef[i];
+       addition(productCoef, productExpon, productSize, bufferCoef, bufferExpon, bufferSize);
+   }
 
    delete[] bufferCoef;
    delete[] bufferExpon;
@@ -381,9 +441,15 @@ void division( int *dividendCoef, int *dividendExpon, int dividendSize,
    int tempCoef[ arraySize ] = {};
    int tempExpon[ arraySize ] = {};
    quotientSize = 0;
-
-
-
+   
+   while (!isZero(remainderSize) && remainderExpon[0] >= divisorExpon[0])
+   {
+       tempCoef[quotientSize] = remainderCoef[0] / divisorCoef[0], tempExpon[quotientSize] = remainderExpon[0] - divisorExpon[0];
+       monomialExpon[0] = tempExpon[quotientSize], monomialCoef[0] = tempCoef[quotientSize];
+       multiplication(divisorCoef, divisorExpon, divisorSize, monomialCoef, monomialExpon, monomialSize, bufferCoef, bufferExpon, bufferSize);
+       subtraction(remainderCoef, remainderExpon, remainderSize, bufferCoef, bufferExpon, bufferSize);
+       quotientSize++;
+   }
 
    quotientCoef = new int[ quotientSize ];
    quotientExpon = new int[ quotientSize ];
