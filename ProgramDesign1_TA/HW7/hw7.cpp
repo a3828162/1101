@@ -119,7 +119,7 @@ int main()
       cout << endl;
 */
 
-      if( hasZeroTerm( quotientCoef, quotientSize ) )
+      /*if( hasZeroTerm( quotientCoef, quotientSize ) )
          cout << "quotient has at least a zero term!\n";
 
       // buffer = divisor * quotient
@@ -140,7 +140,40 @@ int main()
       // if buffer != dividend, an error occurred!
       if( equal( bufferCoef, bufferExpon, bufferSize,
                  dividendCoef, dividendExpon, dividendSize ) )
-         numErrors--;
+         numErrors--;*/
+
+      
+      
+      if( quotientSize > 0 )
+      {
+         if( hasZeroTerm( quotientCoef, quotientSize ) )
+            cout << "quotient has at least a zero term!\n";
+         else
+         {
+            // buffer = divisor * quotient
+            multiplication( divisorCoef, divisorExpon, divisorSize,
+               quotientCoef, quotientExpon, quotientSize,
+               bufferCoef, bufferExpon, bufferSize );
+
+            if( hasZeroTerm( bufferCoef, bufferSize ) )
+               cout << "buffer has at least a zero term!\n";
+            else
+            {
+               // buffer = buffer + remainder = divisor * quotient + remainder
+               addition( bufferCoef, bufferExpon, bufferSize,
+                  remainderCoef, remainderExpon, remainderSize );
+
+               if( hasZeroTerm( bufferCoef, bufferSize ) )
+                  cout << "buffer has at least a zero term!\n";
+               else
+                  // if buffer != dividend, an error occurred!
+                  if( equal( bufferCoef, bufferExpon, bufferSize,
+                      dividendCoef, dividendExpon, dividendSize ) )
+                      numErrors--;
+            }
+         }
+      }
+      
 
       reset( dividendCoef, dividendExpon, dividendSize );
       reset( divisorCoef, divisorExpon, divisorSize );
