@@ -375,8 +375,6 @@ void division( Term *dividend, int dividendSize, Term *divisor, int divisorSize,
        monomial[0].expon = temp[quotientSize].expon, monomial[0].coef = temp[quotientSize].coef;
        multiplication(divisor, divisorSize, monomial, monomialSize, buffer, bufferSize);
        subtraction(remainder, remainderSize, buffer, bufferSize);
-       //multiplication(divisorCoef, divisorExpon, divisorSize, monomialCoef, monomialExpon, monomialSize, bufferCoef, bufferExpon, bufferSize);
-       //subtraction(remainderCoef, remainderExpon, remainderSize, bufferCoef, bufferExpon, bufferSize);
        quotientSize++;
    }
 
