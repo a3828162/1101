@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:backgroundTint="#00BCD4"
+        android:text="返回"
+        android:translationX="60dp"
+        android:translationY="580dp" />
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:translationX="60dp"
+        android:translationY="150dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:backgroundTint="#00BCD4"
+                android:text="問題簡介" />
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:backgroundTint="#00BCD4"
+                android:text="演算法"
+                android:translationY="10dp" />
+
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>
