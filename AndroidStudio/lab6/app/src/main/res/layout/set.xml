@@ -1,0 +1,66 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/wood"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".set" >
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="打 擊 騎 士"
+        android:textSize="60sp"
+        android:translationX="50dp"
+        android:translationY="30dp" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:onClick="new_game"
+        android:text="New Game"
+        android:translationX="50dp"
+        android:translationY="400dp" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Continue"
+        android:translationX="220dp"
+        android:translationY="400dp" />
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:onClick="quit"
+        android:text="Quit"
+        android:translationX="220dp"
+        android:translationY="450dp" />
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:background="#009688"
+        android:max="3"
+        android:min="1"
+        android:progress="2"
+        android:translationX="50dp"
+        android:translationY="350dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Level :  2"
+        android:textSize="20sp"
+        android:translationX="50dp"
+        android:translationY="300dp" />
+</RelativeLayout>
