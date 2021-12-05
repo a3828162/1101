@@ -39,7 +39,7 @@ public class MyActivity extends Activity {
 
         //CREATE THE DATA MODEL FOR STORING THE ITEM TO BE SHIPPED
         shipItem = new ShipItem();
-alarm.setBackgroundResource(R.drawable.sc);
+//alarm.setBackgroundResource(R.drawable.sc);
         //TASK 3: ESTABLISH THE REFERENCES TO INPUT WEIGHT ELEMENT
         height = (EditText) findViewById(R.id.editTextTextPersonName);
         weight = (EditText) findViewById(R.id.editTextTextPersonName2);
