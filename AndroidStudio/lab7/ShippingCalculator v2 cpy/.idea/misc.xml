@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/AsNew/ShippingCalculator v2 cpy/app/src/main/res/layout-land/activity_my_2.xml" value="0.15564373897707232" />
+        <entry key="..\:/AsNew/ShippingCalculator v2 cpy/app/src/main/res/layout-land/intro.xml" value="0.15564373897707232" />
+        <entry key="..\:/AsNew/ShippingCalculator v2 cpy/app/src/main/res/layout-land/output.xml" value="0.15564373897707232" />
+        <entry key="..\:/AsNew/ShippingCalculator v2 cpy/app/src/main/res/layout/activity_my.xml" value="0.1358695652173913" />
+        <entry key="..\:/AsNew/ShippingCalculator v2 cpy/app/src/main/res/layout/activity_my_2.xml" value="0.2" />
+        <entry key="..\:/AsNew/ShippingCalculator v2 cpy/app/src/main/res/layout/list_item.xml" value="0.264" />
+        <entry key="..\:/Users/student01/Desktop/ShippingCalculator/app/src/main/res/layout/activity_my.xml" value="0.33" />
+        <entry key="..\:/Users/student01/Desktop/ShippingCalculator/app/src/main/res/layout/activity_my_2.xml" value="0.2046875" />
+        <entry key="..\:/Users/user/AndroidStudioProject/ShippingCalculator v2 cpy/app/src/main/res/layout-land/activity_my_2.xml" value="0.33" />
+        <entry key="..\:/Users/user/AndroidStudioProject/ShippingCalculator v2 cpy/app/src/main/res/layout-land/intro.xml" value="0.33" />
+        <entry key="..\:/Users/user/AndroidStudioProject/ShippingCalculator v2 cpy/app/src/main/res/layout-land/out.xml" value="0.264" />
+        <entry key="..\:/Users/user/AndroidStudioProject/ShippingCalculator v2 cpy/app/src/main/res/layout-land/output.xml" value="0.33" />
+        <entry key="..\:/Users/user/AndroidStudioProject/ShippingCalculator v2 cpy/app/src/main/res/layout-small-land/output.xml" value="0.7055921052631579" />
+        <entry key="..\:/Users/user/AndroidStudioProject/ShippingCalculator v2 cpy/app/src/main/res/layout/activity_my.xml" value="0.182518115942029" />
+        <entry key="..\:/Users/user/AndroidStudioProject/ShippingCalculator v2 cpy/app/src/main/res/layout/activity_my_2.xml" value="0.264" />
+        <entry key="..\:/Users/user/AndroidStudioProject/ShippingCalculator v2 cpy/app/src/main/res/layout/intro.xml" value="0.33" />
+        <entry key="..\:/Users/user/AndroidStudioProject/ShippingCalculator v2 cpy/app/src/main/res/layout/output.xml" value="0.33" />
+        <entry key="..\:/Users/user/AndroidStudioProject/ShippingCalculator v2/app/src/main/res/layout-land/activity_my_2.xml" value="0.33" />
+        <entry key="..\:/Users/user/AndroidStudioProject/ShippingCalculator v2/app/src/main/res/layout/activity_my_2.xml" value="0.33" />
+        <entry key="..\:/Users/user/AndroidStudioProject/ShippingCalculator/app/src/main/res/layout-land/activity_my_2.xml" value="0.3099647266313933" />
+        <entry key="..\:/Users/user/AndroidStudioProject/ShippingCalculator/app/src/main/res/layout/activity_my.xml" value="0.28306159420289856" />
+        <entry key="..\:/Users/user/AndroidStudioProject/ShippingCalculator/app/src/main/res/layout/activity_my_2.xml" value="0.28306159420289856" />
+        <entry key="..\:/ja/ShippingCalculator/app/src/main/res/drawable/sc.xml" value="0.26145833333333335" />
+        <entry key="..\:/ja/ShippingCalculator/app/src/main/res/drawable/sc2.xml" value="0.26145833333333335" />
+        <entry key="..\:/ja/ShippingCalculator/app/src/main/res/layout-land/activity_my_2.xml" value="0.20767195767195767" />
+        <entry key="..\:/ja/ShippingCalculator/app/src/main/res/layout/activity_my.xml" value="0.2453125" />
+        <entry key="..\:/ja/ShippingCalculator/app/src/main/res/layout/activity_my_2.xml" value="0.2453125" />
+        <entry key="..\:/ja/ShippingCalculator/app/src/main/res/menu/my.xml" value="0.2453125" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+</project>

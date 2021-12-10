@@ -84,8 +84,10 @@ bool legal( string wordToCheck, string *dictionary, int numDicWords )
 
 void readDictionary( string *dictionary, int &numDicWords )
 {
-
-
+    ifstream data("Dictionary.txt", ios::in);
+    string word;
+    if (!data) cout << "Wrong open!/n", exit(1);
+    while (data >> word) dictionary[numDicWords++] = word;
 }
 
 void spellCheck1( string wordToCheck, string *dictionary,
@@ -102,8 +104,15 @@ void spellCheck1( string wordToCheck, string *dictionary,
    for( int i = 0; i < numWords; i++ )
       for( size_t j = 0; j < length; j++ )
       {
+          buffer1 = wordToCheck, buffer2 = words[i];
 
+          char tmp = buffer2[j];
+          buffer1[j] = '?', buffer2[j] = '?';
 
+          if (buffer1 == buffer2) {
+              buffer2[j] = tmp, result[numResult++] = buffer2;
+              break;
+          }
       }
 
    delete [] words;
@@ -121,8 +130,19 @@ void spellCheck2( string wordToCheck, string *dictionary, int numDicWords, strin
    for( int i = 0; i < numWords; i++ )
       for( size_t j = 0; j < length; j++ )
       {
+          bool isRight = true;
 
+          for (int c_word = 0, c_WTC = 0; c_WTC < length - 1; ++c_word, ++c_WTC)
+          {
+              if (c_word == j) ++c_word;
+              if (words[i][c_word] != wordToCheck[c_WTC]) isRight = false;
+          }
 
+          if (isRight)
+          {
+              result[numResult++] = words[i];
+              break;
+          }
       }
 
    delete [] words;
@@ -140,7 +160,19 @@ void spellCheck3( string wordToCheck, string *dictionary, int numDicWords, strin
    for( int i = 0; i < numWords; i++ )
       for( size_t j = 0; j < wordToCheck.size(); j++ )
       {
+          bool isRight = true;
 
+          for (int c_word = 0, c_WTC = 0; c_word < length; ++c_word, ++c_WTC)
+          {
+              if (c_WTC == j) ++c_WTC;
+              if (words[i][c_word] != wordToCheck[c_WTC]) isRight = false;
+          }
+
+          if (isRight)
+          {
+              result[numResult++] = words[i];
+              break;
+          }
 
       }
 
@@ -164,6 +196,6 @@ void findWords( string *&words, int &numWords, string *dictionary,
 
 void saveWords( string *result, int numResult )
 {
-
-
+    ofstream data("Ans2.txt", ios::out);
+    for (int i = 0; i < numResult; i++) data << result[i] << endl;
 }

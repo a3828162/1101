@@ -90,18 +90,8 @@ void readDictionary( char ( *dictionary )[ 21 ], int &numDicWords )
 {
     ifstream data("Dictionary.txt", ios::in);
     char word[21];
-    numDicWords = 0;
-    if (!data) {
-        cout << "bye!記得放文件白癡";
-        exit(1);
-    }
-    while (data >> word) {
-        strcpy_s(dictionary[numDicWords], word);
-        //cout << dictionary[numDicWords] << endl;
-        numDicWords++;
-        
-    }
-    //cout << numDicWords << endl;
+    if (!data) cout << "Wrong open!/n", exit(1);
+    while (data >> word) strcpy_s(dictionary[numDicWords++], word);
 }
 
 void spellCheck1( char *wordToCheck, char ( *dictionary )[ 21 ],
@@ -118,18 +108,15 @@ void spellCheck1( char *wordToCheck, char ( *dictionary )[ 21 ],
    for( int i = 0; i < numWords; i++ )
       for( int j = 0; j < length; j++ )
       {
-          strcpy_s(buffer2, words[i]);
-          strcpy_s(buffer1, wordToCheck);
-          char temp = buffer2[j];
-          buffer1[j] = ';';
-          buffer2[j] = ';';
+          strcpy_s(buffer2, words[i]), strcpy_s(buffer1, wordToCheck);
+
+          char tmp = buffer2[j];
+          buffer1[j] = '?', buffer2[j] = '?';
+
           if (strcmp(buffer1, buffer2) == 0) {
-              buffer2[j] = temp;
-              strcpy_s(result[numResult], buffer2);
-              numResult++;
+              buffer2[j] = tmp, strcpy_s(result[numResult++], buffer2);
               break;
           }
-
       }
 
    delete [] words;
@@ -148,22 +135,17 @@ void spellCheck2( char *wordToCheck, char ( *dictionary )[ 21 ],
    for( int i = 0; i < numWords; i++ )
       for( int j = 0; j < length; j++ )
       {
-          int it = 1;
-          for (int cur_for_words = 0, cur_for_wordToCheck = 0;
-              cur_for_wordToCheck < length - 1;
-              cur_for_words++, cur_for_wordToCheck++) {
-              if (cur_for_words == j) {
-                  cur_for_words++;
-              }
-              if (words[i][cur_for_words] == wordToCheck[cur_for_wordToCheck]) {
-              }
-              else {
-                  it = 0;
-              }
+          bool isRight = true;
+
+          for (int c_word = 0, c_WTC = 0; c_WTC < length - 1; ++c_word, ++c_WTC)
+          {
+              if (c_word == j) ++c_word;
+              if (words[i][c_word] != wordToCheck[c_WTC]) isRight = false;
           }
-          if (it) {
-              strcpy_s(result[numResult], words[i]);
-              numResult++;
+
+          if (isRight)
+          {
+              strcpy_s(result[numResult++], words[i]);
               break;
           }
       }
@@ -185,25 +167,19 @@ void spellCheck3( char *wordToCheck, char ( *dictionary )[ 21 ],
    for( int i = 0; i < numWords; i++ )
       for( unsigned int j = 0; j < strlen( wordToCheck ); j++ )
       {
-          int it = 1;
-          for (int cur_for_words = 0, cur_for_wordToCheck = 0;
-              cur_for_words < length;
-              cur_for_words++, cur_for_wordToCheck++) {
-              if (cur_for_wordToCheck == j) {
-                  cur_for_wordToCheck++;
-              }
-              if (words[i][cur_for_words] == wordToCheck[cur_for_wordToCheck]) {
-              }
-              else {
-                  it = 0;
-              }
-          }
-          if (it) {
-              strcpy_s(result[numResult], words[i]);
-              numResult++;
-              break;
+          bool isRight = true;
+
+          for (int c_word = 0, c_WTC = 0; c_word < length; ++c_word, ++c_WTC)
+          {
+              if (c_WTC == j) ++c_WTC;
+              if (words[i][c_word] != wordToCheck[c_WTC]) isRight = false;
           }
 
+          if (isRight)
+          {
+              strcpy_s(result[numResult++], words[i]);
+              break;
+          }
       }
 
    delete [] words;
@@ -229,9 +205,6 @@ void findWords( char ( *&words )[ 21 ], int &numWords,
 
 void saveWords( char ( *result )[ 21 ], int numResult )
 {
-    ofstream data("ans.txt", ios::out);
-    for (int i = 0; i < numResult; i++) {
-        data << result[i] << endl;
-    }
-
+    ofstream data("Ans.txt", ios::out);
+    for (int i = 0; i < numResult; i++) data << result[i] << endl;
 }

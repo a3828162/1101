@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/AsNewnew/ShadesII/app/src/main/res/layout-port/activity_my.xml" value="0.1296875" />
+        <entry key="..\:/AsNewnew/ShadesII/app/src/main/res/layout/activity_my.xml" value="0.10978835978835978" />
+        <entry key="..\:/AsNewnew/ShadesII/app/src/main/res/layout/color_list_fragment.xml" value="0.1296875" />
+        <entry key="..\:/AsNewnew/ShadesII/app/src/main/res/layout/information_fragment.xml" value="0.1296875" />
+        <entry key="..\:/AsNewnew/ShadesII/app/src/main/res/layout/list_item_shade.xml" value="0.1296875" />
+        <entry key="..\:/AsNewnew/ShadesII/app/src/main/res/menu/my.xml" value="0.1296875" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+</project>

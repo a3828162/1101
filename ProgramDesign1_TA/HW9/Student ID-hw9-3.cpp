@@ -72,8 +72,10 @@ int main()
 
 void readDictionary( vector< string > &dictionary )
 {
-
-
+    ifstream data("Dictionary.txt", ios::in);
+    string word;
+    if (!data) cout << "Wrong open!/n", exit(1);
+    while (data >> word) dictionary.push_back(word);
 }
 
 bool legal( string wordToCheck, vector< string > dictionary )
@@ -96,7 +98,15 @@ void spellCheck1( string wordToCheck, vector< string > dictionary, vector< strin
    for( size_t i = 0; i < words.size(); i++ )
       for( size_t j = 0; j < length; j++ )
       {
+          buffer1 = wordToCheck, buffer2 = words[i];
 
+          char tmp = buffer2[j];
+          buffer1[j] = '?', buffer2[j] = '?';
+
+          if (buffer1 == buffer2) {
+              buffer2[j] = tmp, result.push_back(buffer2);
+              break;
+          }
 
       }
 }
@@ -112,7 +122,19 @@ void spellCheck2( string wordToCheck, vector< string > dictionary, vector< strin
    for( size_t i = 0; i < words.size(); i++ )
       for( size_t j = 0; j < length; j++ )
       {
+          bool isRight = true;
 
+          for (int c_word = 0, c_WTC = 0; c_WTC < length - 1; ++c_word, ++c_WTC)
+          {
+              if (c_word == j) ++c_word;
+              if (words[i][c_word] != wordToCheck[c_WTC]) isRight = false;
+          }
+
+          if (isRight)
+          {
+              result.push_back(words[i]);
+              break;
+          }
 
       }
 }
@@ -128,7 +150,19 @@ void spellCheck3( string wordToCheck, vector< string > dictionary, vector< strin
    for( size_t i = 0; i < words.size(); i++ )
       for( size_t j = 0; j < wordToCheck.size(); j++ )
       {
+          bool isRight = true;
 
+          for (int c_word = 0, c_WTC = 0; c_word < length; ++c_word, ++c_WTC)
+          {
+              if (c_WTC == j) ++c_WTC;
+              if (words[i][c_word] != wordToCheck[c_WTC]) isRight = false;
+          }
+
+          if (isRight)
+          {
+              result.push_back(words[i]);
+              break;
+          }
 
       }
 }
@@ -142,6 +176,6 @@ void findWords( vector< string > &words, vector< string > dictionary, size_t len
 
 void saveWords( vector< string > result )
 {
-
-
+    ofstream data("Ans3.txt", ios::out);
+    for (int i = 0; i < result.size(); i++) data << result[i] << endl;
 }
